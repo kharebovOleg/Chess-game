@@ -13,7 +13,7 @@ public class Bishop extends ChessPiece {
         // Слон при перемещении всегда меняет и столбец и линию, т.к. ходит по диагонали
         if (line != toLine && column != toColumn &&
                 // и идет по диагонали (насколько вправо/влево перешли - настолько же и вверх/вниз)
-                getMax(line, toLine) - getMin(line, toLine) == getMax(column, toColumn) - getMin(column, toColumn) &&
+                Math.abs(line - toLine) == Math.abs(column - toColumn) &&
                 // и не выходим за рамки доски
                 checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn) &&
                 // куда идем, там либо пусто, либо фигура другого цвета

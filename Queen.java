@@ -11,7 +11,7 @@ public class Queen extends ChessPiece{
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if (line != toLine && column != toColumn &&
-                getMax(line, toLine) - getMin(line, toLine) == getMax(column, toColumn) - getMin(column, toColumn) &&
+                Math.abs(line - toLine) == Math.abs(column - toColumn) &&
                 checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn) &&
                 (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].color.equals(this.color)) &&
                 chessBoard.board[line][column] != null) {
