@@ -12,7 +12,7 @@ public class Horse extends ChessPiece {
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if (checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn)) {
             if (line != toLine && column != toColumn &&
-                    (chessBoard.board[toLine][toColumn] == null || chessBoard.board[toLine][toColumn].color.equals(this.color))
+                    (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].color.equals(this.color))
                     && chessBoard.board[line][column] != null) {
                 if (!chessBoard.board[line][column].equals(this)) {
                     return false;
@@ -23,8 +23,8 @@ public class Horse extends ChessPiece {
                         {line - 1, column - 2}, {line - 1, column + 2},
                         {line + 1, column - 2}, {line + 1, column + 2}};
 
-                for (int i = 0; i < positions.length; i++){
-                    if (positions[i][0] == toLine && positions[i][1] == toColumn)
+                for (int[] position : positions) {
+                    if (position[0] == toLine && position[1] == toColumn)
                         return true;
                 }
             }
