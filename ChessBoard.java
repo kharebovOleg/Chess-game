@@ -25,6 +25,12 @@ public class ChessBoard {
                 board[endLine][endColumn] = board[startLine][startColumn];
                 board[startLine][startColumn] = null;
 
+                // метод превращения пешки в ферзя
+                if (board[endLine][endColumn].getSymbol().equals("P") &&
+                (endLine == 0 || endLine == 7)) {
+                board[endLine][endColumn] = new Queen(nowPlayerColor());
+                }
+
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
 
                 return true;
